@@ -1,32 +1,39 @@
 package com.api.cliente.entidades;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
 @Entity
 @Table(name = "tb_usuario")
 public class Usuario implements Serializable {
-	
-	/**
-	 * 
-	 */
+		
 	private static final long serialVersionUID = 1L;
-	
-	
+		
 	@Id	
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	private String nome;
-    private String email;
-	private String senha;
+	private String nome;	
+	
+    private String email;	
+	
+	private String senha;		
+	
 	private String telefone;
+	
+	
+	@OneToMany(mappedBy ="usuario")
+	private List<Pedido> listaDePedidos = new ArrayList<>();
 	
 	
 	public Usuario() {
@@ -89,6 +96,11 @@ public class Usuario implements Serializable {
 
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
+	}
+	
+	
+	public List<Pedido> getListaDePedidos() {
+		return listaDePedidos;
 	}
 
 	@Override
