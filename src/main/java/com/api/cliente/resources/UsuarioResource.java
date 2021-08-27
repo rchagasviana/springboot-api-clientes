@@ -2,8 +2,6 @@ package com.api.cliente.resources;
 
 import java.util.List;
 
-import javax.persistence.Entity;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,9 +22,7 @@ public class UsuarioResource {
 	
 	
 	@GetMapping
-	public ResponseEntity<List<Usuario>> buscarTodos(){
-		
-		//Usuario usuario = new Usuario(1L,"Rafael","rchagas.sdi@gmail.com","123455","1010101010");	
+	public ResponseEntity<List<Usuario>> buscarTodos(){		
 		
 		List<Usuario> listaUsuarios = servicoUsuario.buscarTodos();
 		
